@@ -19,4 +19,4 @@
 
 -  **[7_mfcc_result](https://github.com/teambirdcall/birdcall/tree/main/7_mfcc_result)** - It contains the mfcc-data in the form of pickle files of all the species in the result folder.
 
-- Credits:  [Anish Sachdeva](github.com/anishlearnstocode)
+- Credits:  [Anish Sachdeva](https://github.com/anishLearnsToCode)
