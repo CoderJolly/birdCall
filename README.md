@@ -18,3 +18,5 @@
 -  **[6_mel_result](https://github.com/teambirdcall/birdcall/tree/main/6_mel_result)**- It contains the mel-spectrogram of chunked audios as per respective species that have been made from result folder.
 
 -  **[7_mfcc_result](https://github.com/teambirdcall/birdcall/tree/main/7_mfcc_result)** - It contains the mfcc-data in the form of pickle files of all the species in the result folder.
+
+- Credits:  [Anish Sachdeva](github.com/anishlearnstocode)
