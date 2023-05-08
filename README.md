@@ -3,28 +3,6 @@
 - They are  significant in determining the aspects of our nature and to intuit factors about an area’s quality of life based on a changing bird population. With proper sound detection and classification, researchers can understand what birdcall signal these birds use, in order to communicate with each other or to warn others about the impending dangers in the vicinity.
 - However, it is easier to hear birds than see them and hence audio classification plays a vital role than video or picture based monitoring. Data science may be able to assist, so researchers have turned to large crowd sourced databases of focal recordings of birds to train AI models. 
 
-
-## Exploratory Data Analysis
-- After screening the Cornell data, we can see that from the year 2012, a vast majority of sample counts started to be recorded up until 2019. The year 2014 saw a significant rise in the number of recorded samples also the highest sample recordings amongst all years.
-![eda-year](/figures/eda-year.png)
-
-- The top 5 song types have been also listed wherein they include whether the audio was a bird song or a bird-call. There are mentions of flight call and call song as well, which are nearly of the same number.
-![eda-song](/figures/eda-song.png)
-
-- This waveplot for the bird species, American Woodcock shows a leveled amplitude and speed with sampling rate of 16 Khz with a peent sound (nasal sound by amewoo) around 23 seconds long.
-![eda-wavelet](/figures/eda-wavelet.png)
-
-- For the same species, we can see an increasing and decreasing amplitude but a leveled speed with sampling rate of 48 Khz with a flight call. It is a stereo audio around 8 seconds long.
-![eda-amplitude](/figures/eda-amplitude.png)
-
-## Data Preprocessing
-
-- ### Chunking
-     The Cornell dataset and the Xeno-Canto dataset have inconsistent length audios, so a fixed sized input for model is needed. Therefore, I made chunks of 5 seconds each and for the variable difference, a padding of silence is added in the last to keep the chunk size constant throughout.
-
-- ### Data Augmentation
-    Limited by the number of audio samples per class in the Xeno-Canto dataset, data augmentation became imperative. I applied two data augmentation techniques that are Pitch Shift and Time Shift. Both of these techniques force the network to deal with irregularities in the spectrogram and also, more importantly, teach the network that bird songs/calls appear at any time, independent of the bird species. 
-
 ## Directory Structure
 ```
 ├── data/                       <- Audio files for the project
@@ -53,6 +31,26 @@
 
 ![directory-struct](/figures/directory-struct.png)
 
+## Exploratory Data Analysis
+- After screening the Cornell data, we can see that from the year 2012, a vast majority of sample counts started to be recorded up until 2019. The year 2014 saw a significant rise in the number of recorded samples also the highest sample recordings amongst all years.
+![eda-year](/figures/eda-year.png)
+
+- The top 5 song types have been also listed wherein they include whether the audio was a bird song or a bird-call. There are mentions of flight call and call song as well, which are nearly of the same number.
+![eda-song](/figures/eda-song.png)
+
+- This waveplot for the bird species, American Woodcock shows a leveled amplitude and speed with sampling rate of 16 Khz with a peent sound (nasal sound by amewoo) around 23 seconds long.
+![eda-wavelet](/figures/eda-wavelet.png)
+
+- For the same species, we can see an increasing and decreasing amplitude but a leveled speed with sampling rate of 48 Khz with a flight call. It is a stereo audio around 8 seconds long.
+![eda-amplitude](/figures/eda-amplitude.png)
+
+## Data Preprocessing
+
+- ### Chunking
+     The Cornell dataset and the Xeno-Canto dataset have inconsistent length audios, so a fixed sized input for model is needed. Therefore, I made chunks of 5 seconds each and for the variable difference, a padding of silence is added in the last to keep the chunk size constant throughout.
+
+- ### Data Augmentation
+    Limited by the number of audio samples per class in the Xeno-Canto dataset, data augmentation became imperative. I applied two data augmentation techniques that are Pitch Shift and Time Shift. Both of these techniques force the network to deal with irregularities in the spectrogram and also, more importantly, teach the network that bird songs/calls appear at any time, independent of the bird species. 
 
 ## Feature Extraction
 
