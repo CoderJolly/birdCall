@@ -26,20 +26,30 @@
     Limited by the number of audio samples per class in the Xeno-Canto dataset, data augmentation became imperative. I applied two data augmentation techniques that are Pitch Shift and Time Shift. Both of these techniques force the network to deal with irregularities in the spectrogram and also, more importantly, teach the network that bird songs/calls appear at any time, independent of the bird species. 
 
 ## Directory Structure
-
--  **[1_audio_data](https://github.com/teambirdcall/birdcall/tree/main/1_audio_data)** - Contains the raw Audio files categorized by their species name as folders. This folder should contain the original audios that have not been chunked and are of variable length.
-
--  **[2_denoise_data](https://github.com/teambirdcall/birdcall/tree/main/2_denoise_data)** - Contains the denoised raw Audio files categorized by their species name as folders.
-
--  **[3_chunk_data](https://github.com/teambirdcall/birdcall/tree/main/3_chunk_data)** - It contains the chunked audios as per respective species folder that have been made from audiodata folder.
-
--  **[4_pitch_change](https://github.com/teambirdcall/birdcall/tree/main/4_pitch_change)** - It contains the pickle files of each respective species that have changed on the basis of pitch and dumped in this folder.
-
--  **[5_time_change](https://github.com/teambirdcall/birdcall/tree/main/5_time_change)** - It contains the pickle files of each respective species that have changed on the basis of time and dumped in this folder.
-
--  **[6_mel_result](https://github.com/teambirdcall/birdcall/tree/main/6_mel_result)**- It contains the mel-spectrogram of chunked audios as per respective species that have been made from result folder.
-
--  **[7_mfcc_result](https://github.com/teambirdcall/birdcall/tree/main/7_mfcc_result)** - It contains the mfcc-data in the form of pickle files of all the species in the result folder.
+```
+├── data/                       <- Audio files for the project
+|  ├── 1_audio_data/            <- Contains the raw Audio files
+|  ├── 2_denoise_data/          <- Contains the denoised raw Audio files
+|  ├── 3_chunk_data/            <- Contains the chunked audios after denoising them
+|  ├── 4_pitch_change/          <- Contains augmented audios after changing pitch
+|  ├── 5_time_change/           <- Contains augmented audios after changing time
+├── figures/                    <- Figures used in README
+├── src/                        <- Source code for the project
+│  ├── __init__.py              <- Makes src a Python module
+│  ├── audio_denoising.py       <- Denoising the raw audio files
+│  ├── config.py                <- Makes paths for automating the pre-processing pipeline
+│  ├── config.json              <- Configuration file for the model
+│  ├── data_utils.py            <- Initialized utility functions for handling the data before model training
+|  ├── model_utils.py           <- Initialized model and training functions
+│  ├── preprocess_utils.py      <- Initialized utility functions for preprocessing the audio data
+|  ├── run_model.py             <- Calling all functions to run the model (fitting and evaluation)
+|  ├── run_preprocess_utils.py  <- Calling all functions to run the preprocessing pipeline
+├── results/                    <- Feature extration done on the audio files (Melspectograms and MFCCs)
+|  ├── 6_mel_result/            <- Contains the Mel Spectrograms made wile processing the audio files
+├── .gitignore                  <- List of files and folders git should ignore
+├── LICENSE                     <- Project's License
+└── README.md                   <- The top-level README for developers using this project
+```
 
 ![directory-struct](/figures/directory-struct.png)
 
