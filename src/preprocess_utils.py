@@ -5,19 +5,10 @@ import pickle
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from src.config import *
 from pydub import AudioSegment
 from pydub.utils import make_chunks
 from tqdm import tqdm
-
-
-ROOT_PATH = os.path.dirname(os.path.abspath(__file__))[:-6] # [-6] is done to remove /0_src
-AUDIODATA_DIR = os.path.join(ROOT_PATH,'1_audio_data')
-DENOISE_DIR = os.path.join(ROOT_PATH, '2_denoise_data')
-RESULT_DIR = os.path.join(ROOT_PATH, '3_chunk_data')
-PITCH_DIR = os.path.join(ROOT_PATH, '4_pitch_change')
-TIME_DIR = os.path.join(ROOT_PATH, '5_time_change')
-MEL_DIR = os.path.join(ROOT_PATH, '6_mel_result')
-MFCC_DIR = os.path.join(ROOT_PATH, '7_mfcc_result')
 
 ######################################################################################
 # Helper functions

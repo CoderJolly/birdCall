@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-ROOT_PATH = os.path.dirname(os.path.abspath(__file__))[:-6] #root folder
+ROOT_PATH = os.path.dirname(os.path.abspath(__file__))[:-4] #root folder
 MEL_DIR = os.path.join(ROOT_PATH, '6_mel_result')#mel spectrograms normal chunked
 
 meta=pd.read_csv(os.path.join(os.path.abspath(MEL_DIR)+"/"+"meta.csv"))

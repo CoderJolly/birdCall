@@ -4,13 +4,14 @@ import os
 import librosa
 from statistics import *
 import pandas as pd
-import math
 from math import log
-from preprocessing_utils import *
+from src.preprocess_utils import *
+from src.config import *
 
 
-noisefile='D:/Bird_call_final/5F7C5CF4_noise.wav'
-denoise_dir=root_dir+os.sep+"denoised_audio"
+noisefile = 'data/1_audio_data/noise.wav'
+denoise_dir = DENOISE_DIR
+
 def spectral_sub(input_path,class_label,filename):
     snr_res=[]
     x, sr = librosa.load( input_path, sr=None, mono=True)
@@ -63,11 +64,11 @@ def signaltonoise(a, axis=0, ddof=0):
 # make dataframe for storing snr ratio
 snr_meta=pd.DataFrame(columns=["class_label","filename","before_denoise","after_denoise"])
 # read csv file of raw audio
-raw_audio_meta=pd.read_csv("D:/Bird_call_final/csv/raw_audio_meta.csv")
+raw_audio_meta=pd.read_csv("data/1_audio_data/raw_audio_meta.csv")
 
 def perform_denoising():
     i=0
-    for index_num,row in tqdm.tqdm(raw_audio_meta.iterrows()):
+    for index_num,row in tqdm(raw_audio_meta.iterrows()):
         audio_path=os.path.join(os.path.abspath(audio_dir)+"/"+str(row["class_label"])+"/"+str(row["filename"]))
         l=spectral_sub(audio_path,row["class_label"],row["filename"])
         snr_meta.loc[i,"class_label"]=row["class_label"]
@@ -76,6 +77,4 @@ def perform_denoising():
         snr_meta.loc[i,"after_denoise"]=l[1]
         i=i+1
         
-
-
-snr_meta.to_csv("D:/Bird_call_final/csv/snr_meta.csv")
+snr_meta.to_csv("data/2_denoise_data/snr_meta.csv")

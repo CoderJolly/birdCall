@@ -1,6 +1,6 @@
 import json
 from data_utils import *
-from model_utils_ import *
+from model_utils import *
 
 inp=(X.shape[1],X.shape[2],X.shape[3]) 
 with open('configure.json') as f:

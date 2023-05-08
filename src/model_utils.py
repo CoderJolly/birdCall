@@ -32,9 +32,7 @@ class BirdCall_CNN:
         self.model=keras.Sequential()
         #----input layer--- 
         
-        self.model.add(tf.keras.layers.Conv2D(self.data['filters'][f],
-                                              self.data['kernel size'], 
-                                          activation='relu',input_shape=inp))
+        self.model.add(tf.keras.layers.Conv2D(self.data['filters'][f],self.data['kernel size'], activation='relu',input_shape=inp))
         self.model.add(tf.keras.layers.MaxPooling2D(pool_size=(2,2)))
         self.model.add(tf.keras.layers.Dropout(0.20))
         self.model.add(tf.keras.layers.BatchNormalization())
@@ -89,9 +87,7 @@ class BirdCall_CNN:
         saves the model if current_accuracy > prev_accuracy
         
         """
-        history = self.model.fit(X_train, y_train,batch_size=32,
-                                 epochs=self.data['epochs'][0],
-                                 validation_data=(X_validation,y_validation))
+        history = self.model.fit(X_train, y_train,batch_size=32, epochs=self.data['epochs'][0], validation_data=(X_validation,y_validation))
         
         loss_train = history.history['loss'] # gets the entire history of loss
         acc_train=history.history['acc']# gets the entire history of accuracy
